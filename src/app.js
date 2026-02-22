@@ -31,7 +31,7 @@ app.use(refreshTokenMiddleware) // Auto-refresh tokens
 
 // Routes
 app.use('/auth', googleOAuthRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/v1/users', userRoutes);
 
 // 404 handler
 app.use(notFoundHandler);
