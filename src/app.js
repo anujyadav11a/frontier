@@ -3,7 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser'; 
 import googleOAuthRoutes from './routes/googleOAuth.routes.js';
 import userRoutes from './routes/user.routes.js';
-import { authMiddleware } from './middleware/auth.middleware.js';
+import projectRoutes from './routes/project.routes.js';
+
 
 import { logger } from './utils/Logger.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.middleware.js';
@@ -24,7 +25,7 @@ app.use(express.json({limit:"10kb"}))
 app.use(express.urlencoded({limit:"10kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
-app.use(authMiddleware)
+
 app.use(refreshTokenMiddleware) // Auto-refresh tokens
 
 
@@ -32,6 +33,7 @@ app.use(refreshTokenMiddleware) // Auto-refresh tokens
 // Routes
 app.use('/auth', googleOAuthRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/projects', projectRoutes);
 
 // 404 handler
 app.use(notFoundHandler);
