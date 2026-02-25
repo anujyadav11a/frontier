@@ -117,8 +117,8 @@ const tenantSessionSchema = new Schema({
 });
 
 // Indexes for performance
-sessionSchema.index({ user_id: 1, is_active: 1 });
-sessionSchema.index({ last_activity: 1 });
+tenantSessionSchema.index({ user_id: 1, is_active: 1 });
+tenantSessionSchema.index({ last_activity: 1 });
 
 // Virtual for session duration
 tenantSessionSchema.virtual('duration_minutes').get(function() {
