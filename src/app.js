@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import googleOAuthRoutes from './routes/googleOAuth.routes.js';
 import userRoutes from './routes/user.routes.js';
 import projectRoutes from './routes/project.routes.js';
+import tenantUserroute from './routes/tuser.route.js';
 
 
 import { logger } from './utils/Logger.js';
@@ -34,6 +35,7 @@ app.use(refreshTokenMiddleware) // Auto-refresh tokens
 app.use('/auth', googleOAuthRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/projects', projectRoutes);
+app.use('/api/v1/tenantuser', tenantUserroute)
 
 // 404 handler
 app.use(notFoundHandler);
