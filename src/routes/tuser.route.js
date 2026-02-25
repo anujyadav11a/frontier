@@ -1,11 +1,11 @@
-import Router from XPathExpression
+import Router from 'express'
 import{
      tenantRegister,
     tenantLogin,
     tenantLogout,
     getTenantSessions,
     revokeTenantSession
-} from "../controllers/tenant.controller"
+} from "../controllers/tenant.controller.js"
 
 const tenantUserroute =new Router()
 
