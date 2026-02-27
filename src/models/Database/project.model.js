@@ -131,16 +131,16 @@ projectSchema.methods.isWithinLimits = function() {
 };
 
 // Static methods
-projectSchema.statics.findByProjectId = function(projectId) {
-    return this.findOne({ project_id: projectId, status: 'active' }).lean();
+projectSchema.statics.findByProjectId = function(project_Id) {
+    return this.findOne({ project_id: project_Id, status: 'active' }).lean();
 };
 
-projectSchema.statics.findByApiKey = function(apiKey) {
-    return this.findOne({ api_key: apiKey, status: 'active' }).lean();
+projectSchema.statics.findByApiKey = function(api_Key) {
+    return this.findOne({ api_key: api_Key, status: 'active' }).lean();
 };
 
-projectSchema.statics.findByOwner = function(ownerId) {
-    return this.find({ owner_id: ownerId, status: { $ne: 'deleted' } }).lean();
+projectSchema.statics.findByOwner = function(owner_Id) {
+    return this.find({ owner_id: owner_Id, status: { $ne: 'deleted' } }).lean();
 };
 
 // Pre-save middleware
