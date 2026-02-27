@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import crypto from 'crypto';
 
 /**
  * Tenant User Session Model
@@ -133,12 +134,12 @@ tenantSessionSchema.virtual('is_valid').get(function() {
 });
 
 // Pre-save Middleware
-tenantSessionSchema.pre('save', function(next) {
+tenantSessionSchema.pre('save', async function() {
     // Update last_activity when session is modified
     if (this.isModified() && !this.isModified('last_activity')) {
         this.last_activity = new Date();
     }
-    next();
+   
 });
 
 // Instance Methods
@@ -148,7 +149,6 @@ tenantSessionSchema.pre('save', function(next) {
  * @returns {string} - Unique session identifier
  */
 tenantSessionSchema.methods.generateSessionId = function() {
-    const crypto = require('crypto');
     return crypto.randomBytes(32).toString('hex');
 };
 
@@ -163,8 +163,6 @@ tenantSessionSchema.methods.generateSessionId = function() {
 
 
 tenantSessionSchema.statics.createSession = async function(sessionData) {
-    const crypto = require('crypto');
-    
     const session = new this({
         user_id: sessionData.user_id,
         project_id: sessionData.project_id,
