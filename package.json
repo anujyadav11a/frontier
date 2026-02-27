@@ -5,11 +5,25 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
   "author": "ANUJ YADAV",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.2.1"
+    "axios": "^1.13.5",
+    "bcrypt": "^6.0.0",
+    "bull": "^4.16.5",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "ioredis": "^5.9.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
